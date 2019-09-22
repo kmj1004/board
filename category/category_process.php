@@ -1,7 +1,7 @@
 <?php
     $category = $_POST['category'];
     include_once("../dbconnect.php");
-    var_dump($category);
+
     $sql = "SELECT category FROM category WHERE category=?";
 
     if($stmt = mysqli_prepare($conn, $sql)) {

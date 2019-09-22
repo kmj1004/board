@@ -25,9 +25,25 @@
       <div class="item">
         <table>
           <tr>
-            <td>제목</td>
-            <td>작성자</td>
-            <td>작성일</td>
+            <?php
+                if($_GET['title']) {
+                  include_once('../contents/update.php');
+                  exit();
+                } else {
+                    echo "<td>제목</td>
+                    <td>작성자</td>
+                    <td>작성일</td>";
+                }
+            ?>
+          </tr>
+          <tr>
+            <?php
+                include_once("../search/search.php");
+                if($_POST['search']) {
+                    include_once("../search/search_process.php");
+                    exit();
+                }
+            ?>
           </tr>
             <?php include_once("../category/title.php"); ?>
         </table>
@@ -36,7 +52,7 @@
         <?php
             if($user_id=='admin') {
                 include_once("../category/list.php");
-                include_once("../category/category.php");
+                include_once("../category/category_create.php");
             } else { ?>
                 <?php include_once("../category/list.php");
             } ?>

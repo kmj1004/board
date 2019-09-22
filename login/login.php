@@ -15,7 +15,5 @@
       <p><input type="password" name="password" placeholder="비밀번호"</p>
       <p><input type="submit" value="로그인"</p>
     </form>
-    <a href="find_id.php">아이디 </a> /
-    <a href="find_pw.php">비밀번호 찾기</a>
   </body>
 </html>
