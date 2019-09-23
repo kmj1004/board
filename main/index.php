@@ -26,7 +26,7 @@
         <table>
           <tr>
             <?php
-                if($_GET['title']) {
+                if(isset($_GET['title'])) {
                   include_once('../contents/update.php');
                   exit();
                 } else {
@@ -39,7 +39,7 @@
           <tr>
             <?php
                 include_once("../search/search.php");
-                if($_POST['search']) {
+                if(isset($_POST['search'])) {
                     include_once("../search/search_process.php");
                     exit();
                 }
@@ -51,10 +51,13 @@
       <div>
         <?php
             if($user_id=='admin') {
-                include_once("../category/list.php");
-                include_once("../category/category_create.php");
-            } else { ?>
-                <?php include_once("../category/list.php");
+                include_once("../category/list.php"); ?>
+                <form action="../category/category_process.php" method="post">
+                  <input type="text" placeholder="카테고리" name="category">
+                  <input type="submit" value="생성">
+                </form>
+        <?php   } else {
+                    include_once("../category/list.php");
             } ?>
       </div>
     </div>

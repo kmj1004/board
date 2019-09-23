@@ -11,9 +11,15 @@
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     mysqli_stmt_close($stmt);
 
+    if(isset($row)) {
+        include_once("pw_change.php");
+    } else {
+        echo "<script>alert('아이디 또는 이메일이 틀립니다.');location.href='../main/index.php';</script>";
+    }
+/*
     $password= mt_rand(100000, 999999);
     if($row) {
-        ini_set("SMTP", "ssl://smtp.naver.com");
+        ini_set("SMTP", "smtp.naver.com");
         ini_set("smtp_port", "587");
         $to = 'nara881004@naver.com';
         $subject = '임시 비밀번호 발송';
@@ -25,7 +31,7 @@
         'X-Mailer: PHP/' .phpversion();
         mail($to, $subject, $message, $headers);
     }
-/*
+
     $sql = "UPDATE member SET password=? WHERE user_id=?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, 'ss', $password, $user_id);
@@ -37,3 +43,4 @@
     } else {
         echo "<script>alert('{$email}로 임시 비밀번호가 발송되었습니다.');location.href='../main/index.php';</script>";
     }
+    */

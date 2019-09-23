@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <?php
     //session_start();
-    //$user_id = $_SESSION['user_id'];
-    //print($_SESSION['member_id']);
 ?>
 
 <html>
   <head>
     <meta charset="utf-8">
+    <style>
+      form {display: inline; }
+    </style>
   </head>
 
   <body>
@@ -16,14 +17,19 @@
         <?php
             include_once("../db/category.php");
             while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            echo "<option value=\"{$row['category']}\">{$row['category']}
-            </option>";
-          } ?>
+                echo "<option value={$row['category']}>{$row['category']}</option>";
+            }
+            mysqli_stmt_close($stmt);
+        ?>
       </select>
       <input type="text" placeholder="제목" name="title">
-      <inpyt typr="file" name="file">
+      <input type="file" name="file">
       <p><textarea style="height:300px; width:300px;"name="contents"></textarea></p>
-      <input type="submit" value="등록">
+      <input type="hidden" name="cate_id" value="<?=$row['cate_id']?>">
+      <input type="submit" value="등록" name="submit">
+    </form>
+    <form action="../main/index.php">
+      <input type="submit" value="돌아가기">
     </form>
   </body>
 </html>

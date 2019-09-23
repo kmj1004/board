@@ -1,5 +1,4 @@
 <?php
-//    session_start();
     include_once("../dbconnect.php");
 
     $select = $_POST['select'];
@@ -31,3 +30,4 @@
         $_SESSION['member_id'];
         $_SESSION['cate_id'];
       }
+    mysqli_stmt_close($stmt);  
