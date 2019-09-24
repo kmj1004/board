@@ -1,8 +1,20 @@
 <?php
     session_start();
     $mem_id = $_SESSION['member_id'];
-//    $user_id = $_SESSION['user_id'];
+    $category = $_POST['category'];
+
     include_once("../dbconnect.php");
+    $sql = "SELECT * FROM category WHERE category=?";
+    if($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, 'i', $category);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            if($row['category'] == $category) {
+                break;
+          }
+        }
+      }
 
     $targetdir = "../uploads/";
     $targetfile = $targetdir.basename($_FILES["file"]["name"]);
@@ -28,20 +40,21 @@
               imagepng($newimage, $targetfile);
               break;
         }
+    } elseif(empty($filetype)) {
+          $targetfile = null;
     } else {
-        move_uploaded_file($tmp_file, $targetfile);
+          move_uploaded_file($tmp_file, $targetfile);
     }
+
+    $title = $_POST['title'];
+    $cate_id = $row['category_id'];
+    $contents = $_POST['contents'];
+    $created = date("Y-m-d H:i:s");
 
     $sql = "INSERT INTO contents(title, cate_id, file, contents, created, mem_id) VALUES(?, ?, ?, ?, ?, ?)";
 
     if($stmt = mysqli_prepare($conn, $sql)) {
         mysqli_stmt_bind_param($stmt, "sisssi", $title, $cate_id, $targetfile, $contents, $created, $mem_id);
-
-        $title = $_POST['title'];
-        $cate_id = $_POST['cate_id'];
-        $contents = $_POST['contents'];
-        $created = date("Y-m-d h:i:s");
-
         $result = mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

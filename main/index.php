@@ -9,11 +9,12 @@
         grid-template-columns: 1fr 2fr;
         grid-template-rows: 1fr 1fr; }
       .item {
-        grid-area: 1 / 2 / 3 / 3;
-      }
-      table { width:50%;
-        border-botom: 1px solid gray; }
+        grid-area: 1 / 2 / 3 / 3; }
+      table,tr,td { width: 850px;
+        border-bottom: 1px solid lightgray;
+        border-collapse: collapse; }
       form {display: inline; }
+      a {text-decoration: none; color:black; }
     </style>
   </head>
 

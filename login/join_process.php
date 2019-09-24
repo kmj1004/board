@@ -11,7 +11,7 @@
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        if($row['user_id']) {
+        if(isset($row['user_id'])) {
             echo "<script>alert('존재하는 아이디 입니다.');history.back();</script>";
             exit();
         } elseif(empty($user_id)) {

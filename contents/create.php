@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php
-    //session_start();
-?>
 
 <html>
   <head>
@@ -25,7 +22,6 @@
       <input type="text" placeholder="제목" name="title">
       <input type="file" name="file">
       <p><textarea style="height:300px; width:300px;"name="contents"></textarea></p>
-      <input type="hidden" name="cate_id" value="<?=$row['cate_id']?>">
       <input type="submit" value="등록" name="submit">
     </form>
     <form action="../main/index.php">

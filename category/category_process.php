@@ -1,6 +1,6 @@
 <?php
-    $category = $_POST['category'];
     include_once("../dbconnect.php");
+    $category = $_POST['category'];
 
     $sql = "SELECT category FROM category WHERE category=?";
 

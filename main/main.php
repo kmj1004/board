@@ -9,7 +9,12 @@
         <form action="../login/logout.php" method="post">
           <input type="submit" value="로그아웃">
         </form>
-        <p><a href="../login/pw_change.php">비밀번호 변경</a></p>
+        <p><form action=../login/pw_change.php method="post">
+          <input type="submit" value="비밀번호 변경">
+        </form>
+        <form action="../login/withdraw.php" method="post">
+          <input type="submit" value="회원 탈퇴">
+        </form></p>
     <?php
     } else { ?>
         <form action="../login/login.php" method="post">
