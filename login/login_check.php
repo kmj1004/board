@@ -17,7 +17,6 @@
         } else {
             session_start();
             $_SESSION['user_id'] = $user_id;
-            $_SESSION['password'] = $password;
             header("Location: ../main/index.php");
         }
     }

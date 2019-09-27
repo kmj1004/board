@@ -11,4 +11,5 @@
             break;
       }
     }
+    $_SESSION['id'] = $row['id'];
     mysqli_stmt_close($stmt);
